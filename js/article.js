@@ -20,7 +20,7 @@ function foo(str){
 	for (var i = 0; i < a.length; i++) {
 		a[i].addEventListener('click',function(){
 			var k=this.href.split('#')[1];
-			ajax('http://localhost/eular.github.io/article/'+k+'/README.md',showMarkdown);
+			ajax('http://eular.github.io/article/'+k+'/README.md',showMarkdown);
 		});
 	};
 }
@@ -63,5 +63,5 @@ function addArticle(j,title,abstract,imgsrc){
 }
 
 window.addEventListener('load',function(){
-	ajax('http://localhost/eular.github.io/article/article.json',foo);
+	ajax('http://eular.github.io/article/article.json',foo);
 });
