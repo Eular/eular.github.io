@@ -14,7 +14,7 @@ function foo(str){
 	var json=JSON.parse(str);
 	for (var i = json.article.length - 1; i >= 0; i--) {
 		var art=json.article[i];
-		addArticle(i,art.title,art.abstract,art.img);
+		addArticle(i,art.title,art.abstract,art.img,art.date);
 	};
 	var a=document.querySelectorAll('#work a');
 	for (var i = 0; i < a.length; i++) {
@@ -34,21 +34,22 @@ function showMarkdown(md){
 function Markdown2Html(md){
 	md=md.replace(/(.+)\n=+/g,'<h1>$1</h1><hr>');
 	md=md.replace(/(.+)\n-+/g,'<h2>$1</h2><hr>');
-	md=md.replace(/##(.+)\n/g,'<h3>$1</h3>');
-	md=md.replace(/[^!]\[(.+)\]\((.+)\)\n/g,'<p><a href="$2">$1</a></p>');
-	md=md.replace(/[^!]\[(.+)\]\((.+)\)/g,'<a href="$2">$1</a>');
-	md=md.replace(/!\[(.+)\]\((.+)\)/g,'<div><img src="$2" alt="$1"></div>');
-	md=md.replace(/[^<](.+)[^>]\n/g,'<p>$1</p>');
+	md=md.replace(/###(.+)/g,'<h5>$1</h5>');
+	md=md.replace(/##(.+)/g,'<h3>$1</h3>');
+	md=md.replace(/\n[^!]\[([^\]]+)\]\(([^)]+)\)\n/g,'<p><a href="$2">$1</a></p>');
+	md=md.replace(/[^!]\[([^\]]+)\]\(([^)]+)\)/g,'<a href="$2">$1</a>');
+	md=md.replace(/\n!\[(.+)\]\((.+)\)\n/g,'<div><img src="$2" alt="$1"></div>');
+	md=md.replace(/!\[(.+)\]\((.+)\)/g,'<img src="$2" alt="$1">');
+	md=md.replace(/([^<>].+[^<>])\n/g,'<p>$1</p>');
 	return md;
-	//alert(md);
 }
 
-function addArticle(j,title,abstract,imgsrc){
+function addArticle(j,title,abstract,imgsrc,date){
 	var imghref='#'+j;
 
 	var work=document.querySelector('#work');
 	var header='<a href="#'+j+'"><header><h2>'+title+'</h2></header></a>';
-	var p='<p>'+abstract+'<br>......</p>';
+	var p='<p>'+abstract+'......<br>'+date+'</p>';
 	var section='';
 
 	if (imgsrc) {
