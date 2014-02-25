@@ -44,15 +44,23 @@ function disqus(){
 }
 
 function Markdown2Html(md){
+	var pre=md.match(/<pre>[^<]+<\/pre>/g);
+	for (var i = 0; i < pre.length; i++) {
+		md=md.replace(pre[i],'<pre>'+i+'</pre>');
+	};
 	md=md.replace(/(.+)\n=+/g,'<h1>$1</h1><hr>');
-	md=md.replace(/(.+)\n-+/g,'<h2>$1</h2><hr>');
-	md=md.replace(/###(.+)/g,'<h5>$1</h5>');
-	md=md.replace(/##(.+)/g,'<h3>$1</h3>');
+	md=md.replace(/(.+)\n-+/g,'<h3>$1</h3><hr>');
+	md=md.replace(/\n###(.+)/g,'<h5>$1</h5>');
+	md=md.replace(/\n##(.+)/g,'<br><h3>$1</h3>');
 	md=md.replace(/\n[^!]\[([^\]]+)\]\(([^)]+)\)\n/g,'<p><a href="$2">$1</a></p>');
 	md=md.replace(/[^!]\[([^\]]+)\]\(([^)]+)\)/g,'<a href="$2">$1</a>');
 	md=md.replace(/\n!\[(.+)\]\((.+)\)\n/g,'<div><img src="$2" alt="$1"></div>');
 	md=md.replace(/!\[(.+)\]\((.+)\)/g,'<img src="$2" alt="$1">');
 	md=md.replace(/([^<>].+[^<>])\n/g,'<p>$1</p>');
+	md=md.replace(/<hr>\n+<br>/g,'<hr>');
+	for (var i = 0; i < pre.length; i++) {
+		md=md.replace('<pre>'+i+'</pre>',pre[i]);
+	};
 	return md;
 }
 

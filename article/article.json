@@ -2,10 +2,10 @@
 	"article":
 	[
 		{
-			"title":"Article 1",
-			"abstract":"Phasellus enim sapien, blandit ullamcorper elementum eu,",
-			"date":"2014.2.24",
-			"img":["images/1.jpg","images/2.jpg","images/3.jpg"]
+			"title":"Build A Static Blog On Github",
+			"abstract":"Abstract:由于Github Page支持的是静态页面，要想搭建一个类似Wordpress的个人Blog是有些困难的，现在比较流行的是利用Jekyll来搭建，Jekyll是一个静态站点生成器，它会根据网页源码生成静态文件。它提供了模板、变量、插件等功能，所以实际上可以用来编写整个网站。本Blog没有用Jekyll，而是通过自己写的，用到Ajax的一个静态Blog。而留言板块涉及到后台以及数据库，所以这里用的是著名的Disqus",
+			"date":"2014.2.25",
+			"img":["article/0/0.png","article/0/1.png","article/0/2.png"]
 		}
 	]
 }

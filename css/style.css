@@ -564,3 +564,9 @@
 	margin: 0;
 	padding: 0;
 }
+#blog img{
+	max-width: 800px;
+}
+#blog pre{
+	background-color: #1c1c1c;
+}
