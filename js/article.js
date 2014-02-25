@@ -28,7 +28,18 @@ function foo(str){
 function showMarkdown(md){
 	var html = Markdown2Html(md);
 	var work=document.querySelector('#work');
-	work.innerHTML='<div id="blog">'+html+'</div>';
+	work.innerHTML='<div id="blog">'+html+'</div><div id="disqus_thread"></div>';
+	disqus();
+}
+
+function disqus(){
+	var disqus_shortname = 'eularblog';
+    (function() {
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
 }
 
 function Markdown2Html(md){
