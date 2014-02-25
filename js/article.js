@@ -27,9 +27,10 @@ function foo(str){
 
 function showMarkdown(md){
 	var html = Markdown2Html(md);
-	var work=document.querySelector('#work');
-	work.innerHTML='<div id="blog">'+html+'</div><div id="disqus_thread"></div>';
+	var bolg=document.querySelector('#blog');
+	blog.innerHTML=html+'<div id="disqus_thread"></div>';
 	disqus();
+	document.querySelector('.icon-twitter').click();
 }
 
 function disqus(){
